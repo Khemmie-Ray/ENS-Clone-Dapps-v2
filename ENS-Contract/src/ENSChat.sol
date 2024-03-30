@@ -38,4 +38,12 @@ contract ENSChat {
     function getUserName(address _user) external view returns (string memory) {
         return addressToUsername[_user];
     }
+
+    function getUserRecord(string memory _userName) external view returns (Record memory) {
+        require(bytes(_userName).length > 0, "Username cannot be empty");
+        require(nameService[_userName].exists, "Username does not exist");
+
+        Record memory userRecord = nameService[_userName];
+        return userRecord;
+    }
 }

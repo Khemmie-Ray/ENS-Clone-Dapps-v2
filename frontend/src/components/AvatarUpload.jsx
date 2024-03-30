@@ -48,27 +48,23 @@ const AvatarUpload = () => {
         }
       );
       const resData = await res.json();
+      setImageUrl(resData.IpfsHash);
    
-      localStorage.setItem("ipfsData", JSON.stringify(resData.IpfsHash));
-
-      const savedData = JSON.parse(localStorage.getItem("ipfsData"));
-      console.log("Saved Data:", savedData);
+      console.log(savedData);
+      toast.success("Upload Successful", {
+        position: "top-center",
+      })
   
-      setImageUrl(`https://coral-willowy-felidae-848.mypinata.cloud/ipfs/${savedData}`);
+      // https://coral-willowy-felidae-848.mypinata.cloud/ipfs/
   
-      // Delete resData from local storage
-      // localStorage.removeItem("ipfsData");
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(imageUrl, "image")
-// IpfsHash: "QmShCw1gVgbW79mF1XqYkYjbvHCiBzR3RXgMy61UJYk1AS"
-
   return (
       <div className='flex justify-between items-center flex-col lg:flex-row md:flex-row my-16'>        
-      <section className='lg:w-[47%] md:w-[47%] w-[90%] shadow-xl px-4 py-8 rounded-lg text-center border-gray-100 mb-4 flex justify-center flex-col items-center border-2'>
+      <section className='lg:w-[47%] md:w-[47%] w-[90%] shadow-xl px-4 py-8 rounded-lg text-center border-gray-100 mb-4 flex justify-center flex-col items-center border-2 h-auto lg:h-[250px]'>
       <h3 className='lg:text-3xl md:text-3xl text-xl mb-4'>Step one</h3>
       <p className='mb-8'>Upload your user avatar</p>
       <Dialog.Root>
@@ -103,7 +99,7 @@ const AvatarUpload = () => {
         </Dialog.Content>
     </Dialog.Root>
     </section>
-    <section className='lg:w-[47%] md:w-[47%] w-[90%] shadow-xl px-4 py-8 rounded-lg text-center border-2 border-gray-100 mb-4'>
+    <section className='lg:w-[47%] md:w-[47%] w-[90%] shadow-xl px-4 py-8 rounded-lg text-center border-2 border-gray-100 mb-4 h-auto lg:h-[250px] flex justify-center flex-col items-center'>
       <h3 className='lg:text-3xl md:text-3xl text-xl mb-4'>Step two</h3>
       <p className='mb-8'>Create your Web3 username.</p>
       <Dialog.Root>

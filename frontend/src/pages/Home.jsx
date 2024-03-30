@@ -1,6 +1,7 @@
 import Header from "../components/Header"
 import AvatarUpload from "../components/AvatarUpload"
 import Retrieval from "../components/Retrieval"
+import Footer from "../components/Footer"
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
             <Retrieval />
            </div>
         </section>
+        <Footer />
     </div>
   )
 }
